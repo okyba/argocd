@@ -3,15 +3,12 @@ kind: Application
 metadata:
   name     : root
   namespace: argocd
-#  finalizers:
-#  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name     : in-cluster
     namespace: argocd
   source:
     path   : "Apps/manifests"
-#    path   : "Apps" # just for test, needs to be deleted
     repoURL: "git@github.com:okyba/argocd.git"
     targetRevision: HEAD
   project: default

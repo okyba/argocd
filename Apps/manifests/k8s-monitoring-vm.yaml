@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name     : k8s-monitoring-vm
   namespace: argocd
-  # finalizers:
-  # - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name     : in-cluster
