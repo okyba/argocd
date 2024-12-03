@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spam-app
+  labels:
+    app: spam
+spec:
+  replicas: {{ .Values.spam_app.replicaCount }}
+  selector:
+    matchLabels:
+      app: spam
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000"
+        health.scrape: "true"
+      labels:
+        app: spam
+    spec:
+      containers:
+        - name: spam-app-container
+          image: {{ .Values.spam_app.image }}
+          ports:
+          - containerPort: 3000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: spam-app
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.spam_app.service.port }}
+      targetPort: 3000
+  selector:
+    app: spam
