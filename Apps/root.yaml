@@ -10,7 +10,7 @@ spec:
     name     : in-cluster
     namespace: argocd
   source:
-    path   : "Apps"
+    path   : "Apps/manifests"
     repoURL: "git@github.com:okyba/argocd.git"
     targetRevision: HEAD
   project: default
