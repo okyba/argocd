@@ -31,7 +31,7 @@ victoria-metrics-agent:
   # remoteWritePreffix: "victoria-metrics-cluster-vminsert.default"
   # remoteWritePostfix: ".svc.cluster.local:8480/insert/0/prometheus"
   remoteWrite:
-    - url: "http://monitoring-k8s-victoria-metrics-cluster-vminsert.default.svc.cluster.local:8480/insert/0/prometheus"
+    - url: "http://k8s-monitoring-vm-victoria-metrics-cluster-vminsert.default.svc.cluster.local:8480/insert/0/prometheus"
   config:
     global:
       scrape_interval: 10s
@@ -291,7 +291,7 @@ grafana:
         - name: victoriametrics
           type: prometheus
           orgId: 1
-          url: http://monitoring-k8s-victoria-metrics-cluster-vmselect.default.svc.cluster.local:8481/select/0/prometheus/
+          url: http://k8s-monitoring-vm-victoria-metrics-cluster-vmselect.default.svc.cluster.local:8481/select/0/prometheus/
           access: proxy
           isDefault: true
           updateIntervalSeconds: 10

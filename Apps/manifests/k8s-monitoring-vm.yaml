@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name     : k8s-monitoring-vm
-  namespace: monitoring
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  namespace: argocd
+  # finalizers:
+  # - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name     : in-cluster
-    namespace: monitoring
+    namespace: default
   source:
     path   : "Apps/helm-charts/k8s-monitoring-vm"
     repoURL: "git@github.com:okyba/argocd.git"
@@ -16,7 +16,6 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-
   project: default
   syncPolicy:
     automated:
