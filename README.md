@@ -7,6 +7,7 @@ This repository contains config files for the following:
 
 For details see the structure below:
 
+```
 ├── Apps                            # ArgoCD applications catalog
 │   ├── helm-charts                 # ArgoCD applications helm-charts
 │   │   └── k8s-monitoring-vm
@@ -24,6 +25,7 @@ For details see the structure below:
 │   └── root.yaml                   # manifest for 'root' app deployment in ArgoCD
 ├── Argo
 │   └── values-ha.yaml              # values for ArgoCD installation in HA mode (could be skipped)
+```
 
 
 ## Prerequisites
@@ -36,12 +38,14 @@ Install the following packages & versions:
 
 ## How to's
 
-1.  ArgoCD installation:
+1.  ArgoCD installation
+
+Add ArgoCD helm-chart repository at first: 
 ```console
 helm repo add argo https://argoproj.github.io/argo-helm
 ```
 
-* simple installation (non-HA):
+* Simple installation (non-HA):
 ```console
 helm install argocd argo/argo-cd
 ```
